@@ -1,39 +1,36 @@
+/* 
+  Read a list of links into an ordered list on the html page
+  inspiration found from: "https://www.geeksforgeeks.org/how-to-create-a-link-in-javascript/" 
+*/
+function getIndex() {
+	// initialize array
+	const links = [{
+			label: "Week 01",
+			url: "week1/index.html"
+		} //, For a new index
+		//{
+		//   label: "Week 02",
+		//  url: "week2/index.html"
+		//}
+	]
+  // for each index in links
+	for (let i = 0; i < links.length; i++) {
 
+		// create the url
+		var url = document.createElement('a');
+    url.href = links[i].url;
 
-function fn(){
-    const links = [
-        {
-          label: "Week1 notes",
-          url: "week1/index.html"
-        },
-        {
-            label: "Week2 notes",
-            url: "week1/index.html"
-        }
-      ]
-    for (let i = 0; i < links.length; i++) {
-        // Create anchor element.
-        var a = document.createElement('a'); 
+		// set the text on the anchor
+		var label = document.createTextNode(links[i].label);
+		url.appendChild(label);
 
-        // Create the text node for anchor element.
-        var link = document.createTextNode(links[i].label);
+    // create the list element
+		var listElement = document.createElement('li');
 
-        // Append the text node to anchor element.
-        a.appendChild(link); 
+    // add the url to the list element
+		listElement.appendChild(url);
 
-        // Set the title.
-        a.label = links[i].label; 
-
-        // Set the href property.
-        a.href = links[i].url; 
-
-        // Append the anchor element to the body.
-        document.body.prepend(a); 
-        //var list = document.getElementById("list");
-
-        var node = document.createElement('li');
-        node.appendChild(a);
-        
-        document.querySelector('ol').appendChild(node);
-    }
- }
+    // add the list element to the ordered list
+		document.querySelector('ol').appendChild(listElement);
+	}
+}
