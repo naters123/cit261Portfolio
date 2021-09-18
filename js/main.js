@@ -6,7 +6,7 @@ function getIndex() {
 	// initialize array
 	const links = [{
 			label: "Week 01",
-			url: "week1/index.html"
+			url: "week1"
 		} //, For a new index
 		//{
 		//   label: "Week 02",
