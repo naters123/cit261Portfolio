@@ -4,14 +4,15 @@
 */
 function getIndex() {
 	// initialize array
-	const links = [{
+	const links = [
+		{
 			label: "Week 01",
 			url: "week1"
-		} //, For a new index
-		//{
-		//   label: "Week 02",
-		//  url: "week2/index.html"
-		//}
+		} ,
+		{
+		   	label: "Week 02",
+		   	url: "week2"
+		}
 	]
   // for each index in links
 	for (let i = 0; i < links.length; i++) {
@@ -33,4 +34,10 @@ function getIndex() {
     // add the list element to the ordered list
 		document.querySelector('ol').appendChild(listElement);
 	}
+}
+
+function chapter2() {
+	const question = "What is Superman's real name?"
+	const answer = prompt(question);
+	alert(`You answered ${answer}`)
 }
