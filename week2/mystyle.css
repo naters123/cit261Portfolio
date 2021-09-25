@@ -11,11 +11,6 @@ a {
   width: 50%;
   border: 2px solid black;
   box-shadow: 5px 10px 18px #555555;
-  background-image: url('whiteBack.PNG'), url('whiteBack.PNG'), url('pattern.jpg'); 
-  /*source for pattern.jpg https://wallpapersafari.com/w/g7KCNA */
-  background-position: center bottom, center top, center center;
-  background-repeat: no-repeat, no-repeat, repeat;
-  background-size: 80% 200%, 80%, 100%;
   background-color: white;
   opacity: 0.95;
 }
