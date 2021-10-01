@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan Ricks's Notes for week 03</title>
+    <link rel="stylesheet" href="mystyle.css"/>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    
+      window.onload = getIndex;
+    </script>
+</head>
+<body>
+  <div id="mainWrapper">
+    <h1>Notes for Week 03</h1>
+    <hr>
+    <h2>Object Methods</h2>
+    <p>
+      Looking at the first example shows me just how flexible Javascript is by adding a function to the object after the object has already been declared.
+      I am familiar a bit with the concept of "this" from C++ and a few other languages, so some of this feels like review. I did find it interesting that
+      using this is evaluated during run time, it looks like it allows for some very dynamic factory functions and other things. I think the important thing
+      to remember is that 'this' is free. From the exercises I see that I need to use 'this' in a method or else it may have an undefined value.
+    </p>
+    <h2>This</h2>
+    <p>
+      Of the six it sounds like the Window object should really be used by calling this. The second way is similar to how I used this is C++ so I can understand it being
+      useful for determining which variable with the same name is which. The next few recap what the other article mentioned but I still think they are useful to hear from 
+      a different perspective. I find it confusing as to why the arrow function works differently, I thought the functions were the same. Bind is interesting and I am wondering
+      when I would be using it. The examples with bind were pretty consfusing. 
+    </p>
+    <h2>Chapter 5</h2>
+    <p>
+      The example near the top just answered one of my questions as to why sometimes in javascript setting css properties on an element are in quotes and some arent. I 
+      didn't know you could access object elements with brackets so that is neat to see. Overall it seems the properties and tools for objects in JavaScript are vastly 
+      different than I am used to from other languages. It almost seems like it is too adaptable. It is weird and also useful that properties can be added to objects after they
+      have been declared. Its good to know that objects are copied by reference not by value. JSON was a review, but it was nice to have a refresher. The math object seems
+      pretty standard, and so does the date object.
+    </p>
+    <h2>Chapter 6</h2>
+    <p>
+      I have read about the dom before but I didn't understand it too well, the review is nice. The explaination here shows that things are part of a hiercial web, which is 
+      easy for me to follow. I didn't know you could make a list of every type of element on the page and then do something with them, I could see that being handy at some point. 
+      I see a lot of useful tricks for using Javascript with the HTML. I think of all the chapters so far this one is the one I want to remember as a reference. 
+    </p>
+    <h2>Chapter 7</h2>
+    <p>
+      Event listeners are useful for making the code dynamic and adding a lot of interactivity. I thought this chapter was very useful overall, but a lot of review for me. I did 
+      not know there was an event for double clicking so I thought that was pretty useful. Even coordinates are also something I didn't know existed so I thought they were cool. I don't 
+      know why but while reading this I made the connection that chrome extensions could just be injected javascript code using event listeners and dom to do all sorts of things. Creating events
+      for screen swiping was an interesting aside that I had never considered. Event delegation is also a neat tool. 
+    </p>
+    <hr>
+  </div>
+</body>
+<script>
+
+</script>
+</html>

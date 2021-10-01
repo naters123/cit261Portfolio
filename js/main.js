@@ -12,6 +12,10 @@ function getIndex() {
 		{
 		   	label: "Week 02",
 		   	url: "week2"
+		},
+		{
+		   	label: "Week 03",
+		   	url: "week3"
 		}
 	]
   // for each index in links
@@ -19,7 +23,7 @@ function getIndex() {
 
 		// create the url
 		var url = document.createElement('a');
-    url.href = links[i].url;
+    	url.href = links[i].url;
 
 		// set the text on the anchor
 		var label = document.createTextNode(links[i].label);
@@ -104,3 +108,53 @@ function chapter4() {
 	}
 	start(quiz);	
 } 
+// From https://javascript.info/object-methods exercise 2 
+function exercise2jsinfo() {
+	let calculator = {
+		read() {
+			val1 = prompt("Enter a number"); 
+			val2 = prompt("Enter another number");
+		},
+		sum() {
+			return Number(val1) + Number(val2);
+		},
+		mul() {
+			return Number(val1) * Number(val2);
+		}
+	  };
+	  
+	  calculator.read();
+	  alert( calculator.sum() );
+	  alert( calculator.mul() );
+}
+function exercise5() {
+	var student = {
+		name : "David Rayy",
+		sclass : "VI",
+		rollno : 12 };
+	alert("The original object was: " + JSON.stringify(student));
+	delete student.rollno;
+	alert("Removing rollno gives: " + JSON.stringify(student));
+}
+function bubbleSort() {
+	let data = [6, 4, 0, -3, -2, 1];
+	let output = [6, 4, 0, -3, -2, 1];
+
+	let notDone = true;
+	while (notDone) {
+		notDone = false;
+		for (let i = 0; i < output.length; i++) {
+			if (i !== (output.length - 1)) {
+				if (output[i] > output[i+1]) {
+					let temp = output[i];
+					let temp2 = output[i+1];
+					output[i] = temp2;
+					output[i+1] = temp;
+					notDone = true;
+				}
+			}
+		}
+	}
+	alert("Bubble sorting " + JSON.stringify(data) + " gives: " + JSON.stringify(output));
+	
+}
