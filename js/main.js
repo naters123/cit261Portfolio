@@ -17,6 +17,11 @@ function getIndex() {
 		   	label: "Week 03",
 		   	url: "week3"
 		}
+		,
+		{
+		   	label: "Week 04",
+		   	url: "week4"
+		}
 	]
   // for each index in links
 	for (let i = 0; i < links.length; i++) {
@@ -157,4 +162,10 @@ function bubbleSort() {
 	}
 	alert("Bubble sorting " + JSON.stringify(data) + " gives: " + JSON.stringify(output));
 	
+}
+function turnoffP() {
+	$("p").hide();
+}
+function turnonP() {
+	$("p").show();
 }

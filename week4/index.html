@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan Ricks's Assignments Week 04</title>
+    <script src="../js/main.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="mystyle.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="mainWrapper">
+    <h1 style="text-align: center; font-size: 300%;">Week 04</h1>
+    <hr>
+    <ol id="list" style="list-style-position: inside; text-align: center;">
+      <li>
+        <a href="w4notes.html">Notes for Week 4</a>
+      </li>
+    </ol>
+    <h2>
+      Questions:
+    </h2>
+    <p>
+      Not a whole lot of people I know enjoy PHP. Since every other language is compatible with HTML, why is it used so commonly for server side processes?
+    </p>
+    <p>
+      Do most modern websites utilize the model view controller way of doing things?
+    </p>
+    <h2>
+      Exercises:
+    </h2>
+    <div id="imgContainer">
+      <img id="btn" style="max-width: 100px; margin-left: 50px;" src="largesquare.png">
+    </div>
+    <div id="imgContainer">
+      <H3 id="test">
+        Company Name
+      </H3>
+    </div>
+    <div id="imgContainer2">
+      <p>(Hover on Logo above)</p>
+      <button onclick="turnoffP()" type="button">Hide P elements</button>
+      <button onclick="turnonP()" type="button">Show P elements</button>
+      <a href="wk4.html"><button>Team Activity 3</button></a>
+      <hr style="margin-bottom: 60px; margin-top: 20px;">
+    </div>
+  </div>
+</body>
+<script>
+  function openTest() {
+      jQuery("#test").animate({marginLeft: "-60%", "opacity":1}, "fast")
+  }
+  function closeTest() {
+      jQuery("#test").animate({marginLeft: "-67%",
+          "opacity":0}, "fast");
+  }
+
+  document.getElementById('btn').addEventListener('mouseenter', openTest);
+
+  document.getElementById('btn').addEventListener('mouseleave', closeTest);
+</script>
+</html>

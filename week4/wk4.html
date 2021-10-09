@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Thor Larsen">
+    <meta name="description" content="Portfolio for WDD 330: Web Front-end Development II BYUI">
+    <title>WDD 330: Week 3</title>
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet">
+    <script src="../js/main.js"></script>
+</head>
+
+<body>  
+    <main>
+        <div id="container">
+            <div id="gameboard"> 
+              <div id="1" class="block" onclick="play(this)"> </div>
+              <div id="2" class="block" onclick="play(this)"> </div>
+              <div id="3" class="block" onclick="play(this)"> </div>
+              <div id="4" class="block" onclick="play(this)"> </div>
+              <div id="5" class="block" onclick="play(this)"> </div>
+              <div id="6" class="block" onclick="play(this)"> </div>
+              <div id="7" class="block" onclick="play(this)"> </div>
+              <div id="8" class="block" onclick="play(this)"> </div>
+              <div id="9" class="block" onclick="play(this)"> </div>
+            </div> 
+            <button id="resetbutton" onclick="resetBoard()">RESET</button>
+            <div id="winner"></div>
+           </div>
+    </main>
+    <footer id="footer"></footer>
+</body>
+<script src="play-control.js"> </script>
+</html>
