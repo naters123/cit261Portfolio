@@ -169,3 +169,73 @@ function turnoffP() {
 function turnonP() {
 	$("p").show();
 }
+function multiply() {
+	class MultiplicatorUnitFailure extends Error {}
+
+	function primitiveMultiply(a, b) {
+	  if (Math.random() < 0.2) {
+		return a * b;
+	  } else {
+		throw new MultiplicatorUnitFailure("Klunk");
+	  }
+	}
+	
+	function reliableMultiply(a, b) {
+	  
+		try {
+		  return primitiveMultiply(a, b);
+		} catch (error) {
+		  
+			throw error;
+		}
+	 
+	}
+	try {
+		alert(reliableMultiply(8, 8));
+	} catch (e) {
+		alert("This error message has a random chance of appearing");
+	}
+
+}
+// I had to go with their solution here.. the code is not mine aside from changing the console.log to an alert.
+function lockedBox() {
+	const box = {
+		locked: true,
+		unlock() { this.locked = false; },
+		lock() { this.locked = true;  },
+		_content: [],
+		get content() {
+		  if (this.locked) throw new Error("Locked!");
+		  return this._content;
+		}
+	  };
+	  
+	  function withBoxUnlocked(body) {
+		let locked = box.locked;
+		if (!locked) {
+		  return body();
+		}
+	  
+		box.unlock();
+		try {
+		  return body();
+		} finally {
+		  box.lock();
+		}
+	  }
+	  
+	  withBoxUnlocked(function() {
+		box.content.push("gold piece");
+	  });
+	  
+	  try {
+		withBoxUnlocked(function() {
+		  throw new Error("Pirates on the horizon! Abort!");
+		});
+	  } catch (e) {
+		alert("Error raised:" + " Pirates on the horizon! Abort!");
+	  }
+	  
+	  alert(box.locked);
+	  // → true
+}
