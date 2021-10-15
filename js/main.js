@@ -21,7 +21,11 @@ function getIndex() {
 		{
 		   	label: "Week 04",
 		   	url: "week4"
-		}
+		},
+		{
+			label: "Week 05",
+			url: "week5"
+	 	}
 	]
   // for each index in links
 	for (let i = 0; i < links.length; i++) {
