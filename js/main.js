@@ -25,6 +25,10 @@ function getIndex() {
 		{
 			label: "Week 05",
 			url: "week5"
+	 	},
+		{
+			label: "ToDoApp",
+			url: "TODOapp"
 	 	}
 	]
   // for each index in links
