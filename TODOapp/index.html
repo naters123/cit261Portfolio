@@ -12,33 +12,107 @@
   <div id="mainWrapper">
     <h1 style="text-align: center; font-size: 300%;">TODO App</h1>
     <hr>
-    <p>I have two ideas for a web application:</p>
-    <h2>
-      Platformer Game Online Portfolio
-    </h2>
-    <p>
-      This application would be a platformer game (similar to the classic mario bros) with original characters.
-      This game would allow the user of the site to run around and play in a 2D world that showcases some of the 
-      projects I have worked on in the past. This is opposed to a typical online portfolio that just details the 
-      projects, this would be a more fun way for potential employers to see what I can do while looking at my previous
-      projects. This may be a bit more than I could do, but it looks fun. If I make a very simple game I think it is
-      plausible though. The video below inspired the idea:
-    </p>
-    <iframe style="display: block; margin: auto; margin-top: 5em; margin-bottom: 5em;" width="560" height="315" src="https://www.youtube.com/embed/BZqzhmlTkAc?start=200" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <a href="https://bruno-simon.com/#cybertruck">
-      https://bruno-simon.com/#cybertruck
-    </a>
-    <h2>
-      Fridge Storage/Recipe Application
-    </h2>
-    <p>
-      The other idea was to create an application that can keep track of food in the fridge for you. 
-      The user will enter what they have in the fridge (name, description, expiration date) and then
-      the data will be stored locally. The app would use an api to grab nutritional information on known
-      foods and I wanted to make the app automatically suggest recipies based on what is in the fridge.
-      It would also alert the user if food expires, or if food should be eaten soon. This is a nice
-      oriject that would implement most of the grading material.
-    </p>
+  <div class="fullWidth">
+    <div id="listContainer">
+      <div class="listElement">
+        <div class="tenWidth">
+          <input type="checkbox" onclick="completeTask(this)" class="checkBox" name="" value="">
+        </div>
+        <div class="eightyWidth">
+          <p class="taskName">Task Name</p>
+        </div>
+        <div class="tenWidth">
+          <a class="remove" onclick="removeTask(this)">X</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fullWidth" id="item">
+    <div class="newItemContainer">
+      <div class="nintyWidth">
+        <input id="theInput" value="">
+      </div>
+      <div class="tenWidth">
+        <button onclick="addToList()" id="add">
+          Add
+        </button>
+      </div>
+    </div>
   </div>
 </body>
+<script>
+  class todo {
+    constructor(id, content, completed) {
+      this.id = id;
+      this.content = content;
+      this.completed = completed;
+    }
+    id() {
+      return this.id;
+    }
+    content() {
+      return this.content;
+    }
+    completed() {
+      return this.completed;
+    }
+  }
+
+	let toDoList = new Array();
+  function displayList() {
+    const container = document.getElementById('listContainer');
+    container.innerHTML = '';
+    for (let i = 0; i < toDoList.length; i++)
+    {
+      let listElement = document.createElement('div');
+      checkDiv = document.createElement('div');
+      nameDiv = document.createElement('div'); 
+      xDiv = document.createElement('div');
+      listElement.classList.add('listElement');
+
+      checkDiv.classList.add('tenWidth');
+      let checkBox = document.createElement('input');
+      checkBox.type = 'checkbox';
+      checkBox.name = toDoList[i].content;
+      checkBox.classList.add('checkBox');
+      checkBox.onclick = 'completeTask(this)';
+      if (toDoList[i].completed)
+      {
+        checkBox.checked = true;
+      }
+      checkDiv.appendChild(checkBox);
+      listElement.appendChild(checkDiv);
+
+      nameDiv.classList.add('eightyWidth');
+      let name = document.createElement('p');
+      if ( checkBox.checked === true)
+      {
+        name.style.textDecoration = "line-through";
+      }
+      name.innerHTML = toDoList[i].content;
+      name.classList.add('taskName');
+      nameDiv.appendChild(name);
+      listElement.appendChild(nameDiv);
+
+      xDiv.classList.add('tenWidth');
+      let anchor = document.createElement('a');
+      anchor.classList.add('remove');
+      anchor.onclick = 'removeTask(this)';
+      let label = document.createTextNode('X');
+      anchor.appendChild(label);
+      xDiv.appendChild(anchor);
+      listElement.appendChild(xDiv);
+      document.getElementById('listContainer').appendChild(listElement);
+    }
+  }
+  function addToList() {
+    let content = document.getElementById("theInput").value;
+    if (content) 
+    {
+      let anItem = new todo(new Date().getTime(), content.toString(), false);
+      toDoList.push(anItem);
+      displayList();
+    }
+  }
+</script>
 </html>
