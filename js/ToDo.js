@@ -99,11 +99,12 @@ function addToList() {
 }
 
 function onLoad() {
-	displayList();
-	let data = localStorage.getItem("toDoList");
-	// data = sessionStorage.getItem("toDoList");
-	toDoList = JSON.parse(data);
-	displayList();
+	if (localStorage.getItem("toDoList") !== null) {
+		let data = localStorage.getItem("toDoList");
+		// data = sessionStorage.getItem("toDoList");
+		toDoList = JSON.parse(data);
+		displayList();		
+	}
 }
 
 function removeTask(task) {
