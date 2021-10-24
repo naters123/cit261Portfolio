@@ -54,6 +54,7 @@ button:hover {
   width: 100%;
   font-size: 30px;
   min-height: 60px;
+  border:none;
 }
 .nintyWidth {
   display:inline-block;
