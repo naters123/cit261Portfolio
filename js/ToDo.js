@@ -22,7 +22,7 @@ let showCompleted = true;
 
 function displayList() {
 	localStorage.setItem("toDoList", JSON.stringify(toDoList));
-	sessionStorage.setItem("toDoList", JSON.stringify(toDoList));
+	// sessionStorage.setItem("toDoList", JSON.stringify(toDoList));
 	let tasksLeft = 0;
 	for (let i = 0; i < toDoList.length; i++) {
 		if (!toDoList[i].completed) {
@@ -101,7 +101,7 @@ function addToList() {
 function onLoad() {
 	displayList();
 	let data = localStorage.getItem("toDoList");
-	data = sessionStorage.getItem("toDoList");
+	// data = sessionStorage.getItem("toDoList");
 	toDoList = JSON.parse(data);
 	displayList();
 }
