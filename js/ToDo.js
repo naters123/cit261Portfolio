@@ -99,6 +99,7 @@ function addToList() {
 }
 
 function onLoad() {
+	displayList();
 	let data = localStorage.getItem("toDoList");
 	toDoList = JSON.parse(data);
 	displayList();
