@@ -1,118 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathan Ricks's TODO app</title>
-    <script src="../js/main.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="mystyle.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-  <div id="mainWrapper">
-    <h1 style="text-align: center; font-size: 300%;">TODO App</h1>
-    <hr>
-  <div class="fullWidth">
-    <div id="listContainer">
-      <div class="listElement">
-        <div class="tenWidth">
-          <input type="checkbox" onclick="completeTask(this)" class="checkBox" name="" value="">
-        </div>
-        <div class="eightyWidth">
-          <p class="taskName">Task Name</p>
-        </div>
-        <div class="tenWidth">
-          <a class="remove" onclick="removeTask(this)">X</a>
-        </div>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Nathan Ricks's TODO app</title>
+      <script src="../js/ToDo.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        window.onload = onLoad;
+      </script>
+      <link rel="stylesheet" href="mystyle.css"/>
+   </head>
+   <body>
+     <div id="title">
+      <h1>TO-DO App</h1>
+     </div>
+      <div id="mainWrapper">
+         <div class="fullWidth">
+            <div id="listContainer">
+            </div>
+         </div>
+         <div class="fullWidth">
+          <div class="newItemContainer">
+            <div class="twentyFive">
+              <p id="tasks">3 tasks</p>
+            </div>
+            <div class="twentyFive">
+              <a onclick="showAll()" class="option">All</a>
+            </div>
+            <div class="twentyFive">
+              <a onclick="active()" class="option">Active</a>
+            </div>
+            <div class="twentyFive">
+              <a onclick="complete()" class="option">Completed</a>
+            </div>
+          </div>
+         </div>
+         <div class="fullWidth" id="item">
+            <div class="newItemContainer">
+               <div class="eightyWidth">
+                  <input id="theInput" value="">
+               </div>
+               <div class="twentyWidth">
+                  <button onclick="addToList()" id="add">
+                    Add
+                  </button>
+               </div>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <div class="fullWidth" id="item">
-    <div class="newItemContainer">
-      <div class="nintyWidth">
-        <input id="theInput" value="">
-      </div>
-      <div class="tenWidth">
-        <button onclick="addToList()" id="add">
-          Add
-        </button>
-      </div>
-    </div>
-  </div>
-</body>
-<script>
-  class todo {
-    constructor(id, content, completed) {
-      this.id = id;
-      this.content = content;
-      this.completed = completed;
-    }
-    id() {
-      return this.id;
-    }
-    content() {
-      return this.content;
-    }
-    completed() {
-      return this.completed;
-    }
-  }
-
-	let toDoList = new Array();
-  function displayList() {
-    const container = document.getElementById('listContainer');
-    container.innerHTML = '';
-    for (let i = 0; i < toDoList.length; i++)
-    {
-      let listElement = document.createElement('div');
-      checkDiv = document.createElement('div');
-      nameDiv = document.createElement('div'); 
-      xDiv = document.createElement('div');
-      listElement.classList.add('listElement');
-
-      checkDiv.classList.add('tenWidth');
-      let checkBox = document.createElement('input');
-      checkBox.type = 'checkbox';
-      checkBox.name = toDoList[i].content;
-      checkBox.classList.add('checkBox');
-      checkBox.onclick = 'completeTask(this)';
-      if (toDoList[i].completed)
-      {
-        checkBox.checked = true;
-      }
-      checkDiv.appendChild(checkBox);
-      listElement.appendChild(checkDiv);
-
-      nameDiv.classList.add('eightyWidth');
-      let name = document.createElement('p');
-      if ( checkBox.checked === true)
-      {
-        name.style.textDecoration = "line-through";
-      }
-      name.innerHTML = toDoList[i].content;
-      name.classList.add('taskName');
-      nameDiv.appendChild(name);
-      listElement.appendChild(nameDiv);
-
-      xDiv.classList.add('tenWidth');
-      let anchor = document.createElement('a');
-      anchor.classList.add('remove');
-      anchor.onclick = 'removeTask(this)';
-      let label = document.createTextNode('X');
-      anchor.appendChild(label);
-      xDiv.appendChild(anchor);
-      listElement.appendChild(xDiv);
-      document.getElementById('listContainer').appendChild(listElement);
-    }
-  }
-  function addToList() {
-    let content = document.getElementById("theInput").value;
-    if (content) 
-    {
-      let anItem = new todo(new Date().getTime(), content.toString(), false);
-      toDoList.push(anItem);
-      displayList();
-    }
-  }
-</script>
+   </body>
 </html>
