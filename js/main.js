@@ -23,6 +23,10 @@ function getIndex() {
 		{
 			label: "Week 05",
 			url: "week5"
+		},		
+		{
+			label: "Week 07",
+			url: "week7"
 		},
 		{
 			label: "ToDoApp",
@@ -402,4 +406,34 @@ function complete() {
 	showActive = false;
 	showCompleted = true;
 	displayList();
+}
+// Write a JavaScript function which will take an array of numbers 
+// stored and find the second lowest and second greatest numbers, respectively.
+function secondNums() {
+	let nums = [];
+	let size = 5;
+	alert("Task:\nWrite a JavaScript function which will take an array of numbers stored and find the second lowest and second greatest numbers, respectively.");
+	for(let i=0; i<size; i++) {
+		nums[i] = prompt('Enter an array number:');
+	}
+	nums = nums.sort(function(a, b) {
+		return a - b;
+	});
+	let numsSet = [...new Set(nums)];
+	let nums2 = Array.from(numsSet);
+	if (nums2.length === 1) {
+		alert("The array didn't contain enough unique numbers");
+	}
+	else {
+		alert(`The array is: ${nums}\n${nums2[1]} is the second smallest, ${nums2[nums2.length - 2]} is the second largest`);
+	}
+}
+// A function that lets the user create a function from the html page
+function createJavaFunc() {
+	let functionText = document.getElementById("functionText").value.toString();
+	let theFunction = document.createElement("script");
+	theFunction.language = "javascript";
+	theFunction.text = functionText;
+	document.getElementsByTagName('BODY').item(0).appendChild(theFunction);
+	alert("Function Created");
 }
