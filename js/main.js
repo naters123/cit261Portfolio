@@ -33,6 +33,10 @@ function getIndex() {
 			url: "week8"
 		},
 		{
+			label: "Week 09",
+			url: "week9"
+		},
+		{
 			label: "ToDoApp",
 			url: "TODOapp"
 		}
