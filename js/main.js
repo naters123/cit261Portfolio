@@ -37,6 +37,10 @@ function getIndex() {
 			url: "week9"
 		},
 		{
+			label: "Week 10",
+			url: "week10"
+		},
+		{
 			label: "ToDoApp",
 			url: "TODOapp"
 		}
@@ -444,4 +448,30 @@ function createJavaFunc() {
 	theFunction.text = functionText;
 	document.getElementsByTagName('BODY').item(0).appendChild(theFunction);
 	alert("Function Created");
+}
+function successSubmit() {
+	alert("Info Submit Success");
+}
+function showPassword() {
+	if (document.getElementById("password2").type == 'password') {
+		document.getElementById("password2").type = 'text';
+	} else {
+	  	document.getElementById("password2").type = 'password';
+	}
+	
+}
+function fetchThis() {
+	fetch('test.jpg')
+	.then(response => {
+	  if (!response.ok) {
+		throw new Error('Network response was not OK');
+	  }
+	  return response.blob();
+	})
+	.then(myBlob => {
+	  document.getElementById("testing").src = URL.createObjectURL(myBlob);
+	})
+	.catch(error => {
+	  console.error('There has been a problem with your fetch operation:', error);
+	});
 }
