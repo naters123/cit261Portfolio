@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="mystyle.css" />
+    <title>Fridge Space</title>
+    <script src="FridgeSpace.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      window.onload = onLoad;
+    </script>
+  </head>
+  <body>
+    <div class="mainWrapper">
+      <div class="title">
+        <h1>
+          Fridge Space
+        </h1>
+      </div>
+      <div class="row">
+        <div class="col25">
+          <h2>
+            Food List
+          </h2>
+          <p>
+            <button onclick="openForm()" id="addNewButton" data-modal="modalOne">Add New Item</button>
+            <button onclick="populateList()" id="makeListButton" data-modal="modalOne">Randomly Populate List (For Testing)</button>
+            <button onclick="clearList()" id="clearListButton" data-modal="modalOne">Clear List and Local Storage</button>
+          </p>
+          <div class="row">
+            <div class="col30">
+              <p class="info">Name</p>
+            </div>
+            <div class="col30">
+              <p class="info">Quantity</p>
+            </div>
+            <div class="col30">
+              <p class="info">Exp. Date</p>
+            </div>
+            <div class="row">
+              <hr>
+            </div>
+          </div>
+          <div id="foodList" class="foodList">
+            <!-- <div class="foodListItem">
+              <div class="row">
+                <div class="col30">
+                  <p class="item">Apple</p>
+                </div>
+                <div class="col30">
+                  <p class="item">10</p>
+                </div>
+                <div class="col30">
+                  <p class="item">11/25/2021</p>
+                </div>
+              </div>  
+            </div>  
+            <div class="row">
+              <hr>
+            </div> -->
+          </div> 
+        </div>
+        <div class="col75">
+          <h2>
+            Food Information
+          </h2>   
+          <div class="row">
+            <p  id="nutritionGuideMessage">After adding items to the list, click on a food list item to view more information.<br>&#171;&#171;</p>
+          </div> 
+          <div style="display: none;" id="nutritionDiv" class="row">
+            <div class="col50">
+              <div id="nutritionFactsDiv">
+                <p class="nutritionFacts">Nutrition Facts</p>
+                <hr class="dark">
+                <p class="nutritionInfo">Amount per serving</p>
+                <div class="row"> <span><p class="calories floatLeft"    >Calories</p><p id="calorieAmount" class="calorieAmount floatRight">230</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Fat</p><p id="Fat" class="amount floatRight">8g</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Cholesterol</p><p id="Cholesterol" class="amount floatRight">8g</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Dietary Fiber</p><p id="DietaryFiber" class="amount floatRight">8g</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Protein</p><p id="Protein" class="amount floatRight">8g</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Saturated Fat</p><p id="SaturatedFat" class="amount floatRight">8g</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Sodium</p><p id="Sodium" class="amount floatRight">8g</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Sugar</p><p id="Sugar" class="amount floatRight">8g</p></span></div>
+                <hr class="dark">
+                <div class="row"><span><p class="nutritionInfo floatLeft">Carbohydrates</p><p id="Carbohydrates" class="amount floatRight">8g</p></span></div>            
+              </div>
+            </div>
+            <div id="itemFacts" class="col50">
+              <div class="row">
+                <p id="Name" class="Name"></p>
+              </div>
+              <div class="row">
+                <p id="Quantity" class="Quantity"></p>
+              </div>
+              <div class="row">
+                <p id="Date" class="Date"></p>
+              </div>
+              <div class="row">
+                <button onclick="removeFood()" id="removeFoodButton">Remove Item</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- https://www.w3docs.com/snippets/javascript/how-to-create-a-popup-form-using-javascript.html -->
+    <div id="addFood" class="formContainer">
+        <div class="theForm">
+          <form onsubmit="addToList()">
+            <h2 id="formHeader">Enter a Food Item:    <a onclick="closeForm()" class="close">X</a></h2>
+            <div>
+              <input id="inName" class="fname" type="text" name="name" placeholder="Food name" required>
+              <input id="inQuantity" type="number" name="quantity" placeholder="Quantity" required>
+              <label id="exLabel" for="date">Exp. Date</label>
+              <input id="inDate" type="date" name="date" placeholder="Exp Day" required>
+            </div>
+            <button id="addButton" type="submit">Add</button>
+          </form>
+        </div>
+    </div>
+  </body>
+</html>
