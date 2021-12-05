@@ -15,7 +15,7 @@ function displayList() {
 	// sessionStorage.setItem("toDoList", JSON.stringify(toDoList));
 	const container = document.getElementById('foodList');
 	container.innerHTML = '';
-	console.log(foodList);
+	//console.log(foodList);
 	for(let i = 0; i < foodList.length; i++) {
 		// Top div
 		let foodListItem = document.createElement("div");
@@ -70,7 +70,7 @@ function displayList() {
 
 function addToList() {
 	document.getElementById("addFood").style.display = "none";
-	let inName = document.getElementById("inName").value;
+	let inName = document.getElementById("invTypes").value;
 	let inQuantity = document.getElementById("inQuantity").value;
 	let inDate = document.getElementById("inDate").value;
 	let anItem = new food(new Date().getTime(), inName, inQuantity, inDate);
@@ -83,6 +83,21 @@ function onLoad() {
 	if(localStorage.getItem("foodList") !== null) {
 		let data = localStorage.getItem("foodList");
 		foodList = JSON.parse(data);
+		expiredFood = new Array();
+		let todayDate = new Date();
+		todayDate = todayDate.toISOString().slice(0, 10);
+		for(let i = 0; i < foodList.length; i++) {
+			if (foodList[i].exdate < todayDate) {
+				expiredFood.push(foodList[i].name);
+			}
+		}
+		if (expiredFood.length) {
+			let message = "The following foods have expired: \n\n"
+			for(let i = 0; i < expiredFood.length; i++) {
+				message += expiredFood[i] + "\n\n";
+			}
+			alert(message);
+		}
 		displayList();
 	}
 }
@@ -103,9 +118,9 @@ function clearList() {
 	displayList();
 }
 
-function removeFood(food) {
-	console.log(food);
-	const foodNames = food.className.split(' ');
+function removeFood() {
+	//console.log(food);
+	const foodNames = document.getElementById("removeId").value.split(' ');
 	for(let i = 0; i < foodList.length; i++) {
 		for(let j = 0; j < foodNames.length; j++) {
 			if(foodNames[j] == foodList[i].id) {
@@ -113,14 +128,20 @@ function removeFood(food) {
 			}
 		}
 	}
+	document.getElementById("nutritionGuideMessage").style.display = "block";
+	document.getElementById("nutritionGuideMessage").innerHTML = "The item was deleted. Click on another to view its nutritional information. <br>&#171;&#171;"
+	document.getElementById("nutritionDiv").style.display = "none";
 	displayList();
 }
 
 function getNutrition(listItem) {
 	document.getElementById("nutritionGuideMessage").style.display = "none";
 	document.getElementById("nutritionDiv").style.display = "block";
-	var food = listItem.id;
-	fetch(`https://nutritionix-api.p.rapidapi.com/v1_1/search/${food}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat%2Cnf_protein%2Cnf_total_carbohydrate%2Cnf_cholesterol%2Cnf_saturated_fat%2Cnf_sodium%2Cnf_dietary_fiber%2Cnf_sugars`, {
+	let food = listItem.id;
+	document.getElementById("removeId").value = listItem.className;
+	thefood = food.replace(/%/g,'%25');
+
+	fetch(`https://nutritionix-api.p.rapidapi.com/v1_1/search/${thefood}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat%2Cnf_protein%2Cnf_total_carbohydrate%2Cnf_cholesterol%2Cnf_saturated_fat%2Cnf_sodium%2Cnf_dietary_fiber%2Cnf_sugars`, {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
@@ -128,9 +149,9 @@ function getNutrition(listItem) {
 		}
 	}).then(response => response.json()).then(data => {
 		displayNutrition(data, food);
-		console.log('Success:', data);
-		console.log(data.hits[0].fields.item_name);
-		console.log(data.hits[0].fields.nf_calories);
+		// console.log('Success:', data);
+		// console.log(data.hits[0].fields.item_name);
+		// console.log(data.hits[0].fields.nf_calories);
 	}).catch(err => {
 		console.error(err);
 	});
@@ -171,7 +192,7 @@ function closeForm() {
 	document.getElementById("addFood").style.display = "none";
 }
 
-// Randomize array
+// Randomize array, was able to write this after seeing a stack overflow post about it
 // Src: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -181,4 +202,41 @@ function shuffleArray(array) {
         array[j] = temp;
     }
 	return array;
+}
+
+function displayOptions(){
+	if (document.getElementById("inName").value.length !== 0) {
+		let food = document.getElementById("inName").value;
+		// alert(food.value);
+		fetch(`https://nutritionix-api.p.rapidapi.com/v1_1/search/${food}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat%2Cnf_protein%2Cnf_total_carbohydrate%2Cnf_cholesterol%2Cnf_saturated_fat%2Cnf_sodium%2Cnf_dietary_fiber%2Cnf_sugars`, {
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
+				"x-rapidapi-key": "a27d61b31cmsh5aa285c51234714p1b6693jsncfb62cf3dcbf"
+			}
+		}).then(response => response.json()).then(data => {
+			
+			createDisplayOptions(data, food);
+			console.log('Success:', data);
+			// console.log(data.hits[0].fields.item_name);
+			// console.log(data.hits[0].fields.nf_calories);
+		}).catch(err => {
+			console.error(err);
+		});
+	}
+}
+
+function createDisplayOptions(data, food) {
+
+	let selectList = document.getElementById("invTypes");
+	selectList.innerHTML = "";
+	let theOptions = "";
+	for (let i = 0; i < data.hits.length; i++) {
+		let anOption = `<option value='${data.hits[i].fields.item_name}'>${data.hits[i].fields.item_name}</option>`;
+		theOptions += anOption;
+	}
+	let finalOption = `<option value='${food}'>${food}</option>`;
+	theOptions += finalOption;
+
+	selectList.innerHTML = theOptions;
 }

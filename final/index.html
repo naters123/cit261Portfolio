@@ -62,7 +62,8 @@
         <div class="col75">
           <h2>
             Food Information
-          </h2>   
+          </h2>  
+          <input id="removeId" type="hidden"> 
           <div class="row">
             <p  id="nutritionGuideMessage">After adding items to the list, click on a food list item to view more information.<br>&#171;&#171;</p>
           </div> 
@@ -115,9 +116,14 @@
           <form onsubmit="addToList()">
             <h2 id="formHeader">Enter a Food Item:    <a onclick="closeForm()" class="close">X</a></h2>
             <div>
-              <input id="inName" class="fname" type="text" name="name" placeholder="Food name" required>
+              <label class="exLabel" for="date">Food</label>
+              <input id="inName" value="" class="fname" type="text" name="name" placeholder="Food name" onfocusout="displayOptions()" required>
+              <label class="exLabel" for="date">Specific Type</label>
+              <select name="types" id="invTypes" required>
+              </select>
+              <label class="exLabel" for="date">Quantity</label>
               <input id="inQuantity" type="number" name="quantity" placeholder="Quantity" required>
-              <label id="exLabel" for="date">Exp. Date</label>
+              <label class="exLabel" for="date">Exp. Date</label>
               <input id="inDate" type="date" name="date" placeholder="Exp Day" required>
             </div>
             <button id="addButton" type="submit">Add</button>
