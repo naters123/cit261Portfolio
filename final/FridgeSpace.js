@@ -12,14 +12,15 @@ class food {
 let foodList = new Array();
 // This is for a random list population
 let foods = ["Big Mac", "Egg", "Butter", "Bread", "Yogurt", "Cheese", "Chicken", "Turkey", "Apple", "Banana"];
+
 /* Display the list of foods on the left container. I should've just used innerHTML/literals instead of appendChild for everything.. */
 function displayList() {
 	localStorage.setItem("foodList", JSON.stringify(foodList));
-	// sessionStorage.setItem("toDoList", JSON.stringify(toDoList));
 	const container = document.getElementById('foodList');
 	// Clear the list to redraw it
 	container.innerHTML = '';
-	//console.log(foodList);
+
+	// Add each food to the list display
 	for(let i = 0; i < foodList.length; i++) {
 		// Top div
 		let foodListItem = document.createElement("div");
@@ -59,7 +60,7 @@ function displayList() {
 		item3.classList.add(foodList[i].id);
 		item3.innerHTML = foodList[i].exdate;
 		col303.appendChild(item3);
-		// attach coloumns to row
+		// Attach coloumns to row
 		row1.appendChild(col301);
 		row1.appendChild(col302);
 		row1.appendChild(col303);
@@ -83,7 +84,7 @@ function addToList() {
 	let inName = document.getElementById("invTypes").value;
 	let inQuantity = document.getElementById("inQuantity").value;
 	let inDate = document.getElementById("inDate").value;
-	// create the Food item and add to list
+	// Create the Food item and add to list
 	let anItem = new food(new Date().getTime(), inName, inQuantity, inDate);
 	foodList.push(anItem);
 	// The list changed so redraw it
@@ -125,7 +126,7 @@ function removeFood() {
 	// Display a message instead
 	document.getElementById("nutritionGuideMessage").style.display = "block";
 	document.getElementById("nutritionGuideMessage").innerHTML = "The item was deleted. Click on another to view its nutritional information. <br>&#171;&#171;"
-		// The list changed so redraw it
+	// The list changed so redraw it
 	displayList();
 }
 /* API request for a food's nutritional information */

@@ -327,39 +327,39 @@ button {
       width: 100%;
  }
  #nutritionGuideMessage {
-  background-color: white;
-  width: 70%;
-  display: block;
-  margin: auto;
-  margin-top: 5%;
-  text-align: center;
-  padding: 30px;
-  font-size: 20px;
-  padding-top: 50px;
-  padding-Bottom: 100px;
-  font-weight: 800;
-  border-radius: 10px;
-  height: 10vh;
-  overflow-y: auto;
-}
-#Name {
-  font-size: large;
-  text-align: center;
-}
-#Quantity {
-  font-size: large;
-  text-align: center;
-}
-#Date {
-  font-size: large;
-  text-align: center;
-}
-#removeFoodButton {
-  display: block;
-  margin: auto;
-  font-size: large;
-}
-form {
-  width: 80%;
-}
+    background-color: white;
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    padding: 30px;
+    font-size: 20px;
+    padding-top: 50px;
+    padding-Bottom: 100px;
+    font-weight: 800;
+    border-radius: 10px;
+    height: 10vh;
+    overflow-y: auto;
+  }
+  #Name {
+    font-size: large;
+    text-align: center;
+  }
+  #Quantity {
+    font-size: large;
+    text-align: center;
+  }
+  #Date {
+    font-size: large;
+    text-align: center;
+  }
+  #removeFoodButton {
+    display: block;
+    margin: auto;
+    font-size: large;
+  }
+  form {
+    width: 80%;
+  }
 }
