@@ -6,7 +6,8 @@ class food {
 		this.quantity = quantity;
 		this.exdate = exdate;
 	}
-}
+} 
+
 // A list of food items
 let foodList = new Array();
 // This is for a random list population
